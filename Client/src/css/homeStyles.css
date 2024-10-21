@@ -1,0 +1,55 @@
+.img::after{
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 20;
+    height: 100%;
+    background: linear-gradient(transparent .1%, #000 );
+}
+.img{
+    background: url('../../public/img3.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90lvh;
+    animation-name: entrada;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    animation-direction: normal;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+
+
+.img::before{
+    position: absolute;
+    content: "";
+    bottom: -1px;
+    right: 0;
+    width: 100%;
+    border: none;
+    height: 50px;
+    background: #121212;
+    z-index: 50;
+    clip-path: polygon(49% 84%, 78% 46%, 100% 79%, 100% 100%, 68% 100%, 32% 100%, 0 100%, 0 76%, 20% 46%);
+}
+
+
+.border-rainbow {
+    border: 1px solid transparent;
+    border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    border-image-slice: 1;
+    border-radius: 20px;
+    
+}
+
+.border-radius{
+    border-radius: 78% 25% 60% 29% / 100% 20% 83% 2%;
+}
+
+
+
+

@@ -1,0 +1,285 @@
+.animation-title {
+  animation-name: entradaTitle;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-direction: normal;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+.animation-text {
+  animation-name: entradaText;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-direction: normal;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+.animation-icons {
+  animation-name: entradaIcons;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-direction: normal;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+
+.animation-icons:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.animation-icons:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.animation-icons:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.animation-icons:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.animation-icons:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.animation-icons:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.animation-icons:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.animation-icons:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.animation-icons:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.animation-icons:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+.animation-devs {
+  animation-name: entradaDevs;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-direction: normal;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+.animation-btn {
+  animation-name: entradaBtn;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-direction: normal;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+.animation-text-up{
+    animation-name: entradaTextUp;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-direction: normal;
+      animation-duration: 1s;
+      animation-iteration-count: 1;
+}
+
+
+.animation-cards-text{
+    transition: transform 0.4s ease;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: view();
+        animation-range-end: cover 40%;
+}
+.animation-cards-text:nth-child(1){
+        animation-name: entradaCardText1;
+   
+}
+.animation-cards-text:nth-child(2){
+        animation-name: entradaCardText2;
+   
+}
+
+.transition-card {
+  transition: transform 0.4s ease;
+  animation-name: entradaCard1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-timeline: view();
+  animation-range-end: cover 40%;
+}
+
+.transition-card:nth-child(2) {
+  animation-name: entradaCard2;
+}
+
+.transition-card:nth-child(3) {
+  animation-name: entradaCard3;
+}
+
+.transition-card:nth-child(4) {
+  animation-name: entradaCard4;
+}
+
+.transition-card:nth-child(5) {
+  animation-name: entradaCard5;
+}
+
+.transition-card:nth-child(6) {
+  animation-name: entradaCard6;
+}
+@keyframes entradaDevs {
+  0% {
+    transform: translateY(50px);
+    scale: 0.8;
+  }
+
+  100% {
+    transform: translateY(0);
+    scale: 1;
+  }
+}
+@keyframes entradaIcons {
+  0% {
+    transform: translateY(-50px);
+    scale: 0.4;
+  }
+
+  100% {
+    transform: translateY(0);
+    scale: 1;
+  }
+}
+@keyframes entradaCardText1 {
+  0% {
+    transform: translateY(40px);
+    opacity: .3;
+    scale: .4;
+  }
+
+  100% {
+    transform: translateY(0);
+    scale: 1;
+  }
+}
+
+@keyframes entradaCardText2 {
+  0% {
+    transform: translateY(80px);
+    opacity: 0.3;
+    scale: .5;
+  }
+
+  100% {
+    transform: translateY(0);
+    scale: 1;
+  }
+}
+@keyframes entradaCard1 {
+  0% {
+    transform: translateX(500px);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(0);
+    scale: 1;
+  }
+}
+
+@keyframes entradaCard2 {
+  0% {
+    transform: translateX(400px);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes entradaCard3 {
+  0% {
+    transform: translateX(300px);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes entradaCard4 {
+  0% {
+    transform: translateX(-500px);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes entradaCard5 {
+  0% {
+    transform: translateX(-400px);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes entradaCard6 {
+  0% {
+    transform: translateX(-300px);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes entrada {
+  0% {
+    transform: translateX(-50px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes entradaTitle {
+  0% {
+    transform: translateX(100px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes entradaText {
+  0% {
+    transform: translateX(-100px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes entradaBtn {
+  0% {
+    transform: translateY(200px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+

@@ -1,0 +1,36 @@
+input:not(:placeholder-shown) + label {
+  transform: scale(0.9) translateY(-12px);
+  opacity: 1;
+  padding: 0 1px;
+  color: #ff6100;
+  opacity: 1;
+  transition: transform 0.2s linear;
+}
+input:focus + label {
+  transform: scale(0.9) translateY(-12px);
+  opacity: 1;
+  padding: 0 1px;
+  color: #047857;
+  transition: transform 0.2s linear, color 0.2s linear;
+}
+input:focus:has(~ div) ~ div > * {
+  color: #047857;
+}
+input:focus:has(~ span) + label,
+input:focus:has(~ span) ~ div > * {
+  color: #dc2626;
+}
+input:not(:focus):has(~ span) + label,
+input:not(:focus):has(~ span) ~ div > * {
+  color: #dc2626;
+}
+input:not(:placeholder-shown) :has(~ span) + label,
+input:not(:placeholder-shown) :has(~ span) ~ div > * {
+  color: #dc2626;
+}
+
+
+
+input:placeholder-shown + label {
+  transition: transform 0.2s linear;
+}
