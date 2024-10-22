@@ -6,7 +6,7 @@ export const adminToken = (req, res) => {
   if (token !== TOKEN_ADMIN)
     return res
       .status(404)
-      .json({ message: "Contraseña incorrecta, intentalo nuevamente " });
+      .json({ message: "Token invalido " });
 
   return res.sendStatus(201);
 };

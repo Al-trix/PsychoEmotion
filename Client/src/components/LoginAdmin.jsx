@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/authContext";
 import InputsContents from "./InputsContents";
+import ErrorAlert from "../components/ErrorAlert";
 import { Input, Button } from "@nextui-org/react";
+import { FaUserSecret } from "react-icons/fa";
+import "../css/animationAuth.css";
+
 import { adminToken } from "../api/admin.js";
 
 function LoginUser() {
@@ -74,8 +78,8 @@ function LoginUser() {
   return (
     <>
       {tokenAdmin ? (
-        <div className='  mt-24 rounded-3xl mx-auto  z-20 absolute left-1/2 -translate-x-1/2  backdrop-blur-lg w-max'>
-          <div className=' shadow-2xl border border-white/20 bg-black/70 shadow-black p-6 rounded-3xl'>
+        <div className='animation-in  rounded-3xl relative z-20 -translate-x-36  translate-y-1/3   backdrop-blur-lg w-max'>
+          <div className=' shadow-2xl border border-white/20 bg-black/80 shadow-black py-8 px-10 rounded-3xl'>
             <h3 className='text-2xl text-center   text-kenyan-copper-500 font-boldtext-kenyan-copper-500 font-bold  font-mono uppercase'>
               Introduce el token de Administradores{" "}
             </h3>
@@ -86,21 +90,21 @@ function LoginUser() {
               onSubmit={handleSubmitToken}
               className='w-3/5  mt-8 flex items-center mx-auto gap-8'
             >
-              <Input
-                type='password'
-                variant='underlined'
-                value={token} // Controla el valor del input
-                onChange={(e) => setToken(e.target.value)} // Actualiza el estado del token
-                label='Introduce el token'
-                errorMessage={tokenMessageLabel} // Muestra el mensaje de error si existe
-                className={`max-w-xs ${
-                  tokenMessageLabel || !tokenAdmin
-                    ? "border-red-500 text-red-500"
-                    : ""
-                }`} // Aplica estilos rojos manualmente si hay un error
-                color={tokenMessageLabel || !tokenAdmin ? " danger" : "default"}
-                // Cambia el color del input
-              />
+              <div>
+                <Input
+                  type='password'
+                  variant='underlined'
+                  value={token} // Controla el valor del input
+                  onChange={(e) => setToken(e.target.value)} // Actualiza el estado del token
+                  label='Introduce el token'
+                  isInvalid={!!tokenMessageLabel || !tokenAdmin} // Marca el input como inválido si hay error
+                  errorMessage={
+                    tokenMessageLabel || (!tokenAdmin && "Token inválido")
+                  } // Muestra el mensaje de error si existe
+                  className='max-w-xs' // Aplica clases fijas como ancho máximo
+                  // Muestra el mensaje de error si existe
+                />
+              </div>
 
               <Button
                 color='primary'
@@ -114,8 +118,8 @@ function LoginUser() {
           </div>
         </div>
       ) : (
-        <div className='mr-48 mt-20 rounded-3xl   z-20 relative  backdrop-blur-xl  w-max'>
-          <div className='shadow-2xl border border-white/20 bg-black/70 shadow-black p-6 rounded-3xl'>
+        <div className='animation-out -translate-x-24 mt-20 rounded-3xl  z-20 relative  backdrop-blur-xl  w-max'>
+          <div className='shadow-2xl border border-white/20 bg-black/80 shadow-black px-12 py-10 rounded-3xl'>
             <h3 className='text-2xl/relaxed w-full font-mono uppercase'>
               <span className='text-kenyan-copper-500 font-bold'>
                 Inicia sesion{" "}
@@ -123,12 +127,12 @@ function LoginUser() {
               para continuar
             </h3>
             <h6 className='text-xs text-white/40'>
-              Introduce los datos pedidos
+              Recuedrda que este apartado es privado.{" "}
             </h6>
             <section className=''>
               <form
                 onSubmit={handleSubmit}
-                className='relative w-min  pb-3 flex flex-col mt-3 gap-5'
+                className='relative w-min  pb-3 flex flex-col mt-6 gap-5'
               >
                 <InputsContents
                   handleEvent={handleChange}
@@ -152,6 +156,7 @@ function LoginUser() {
                 <div className='flex justify-between items-center'>
                   <Button
                     type='submit'
+                    size='lg'
                     color='primary'
                     isDisabled={user.email === "" || user.password === ""}
                     className='bg-kenyan-copper-800 '

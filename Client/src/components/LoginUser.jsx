@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import InputsContents from "./InputsContents";
 import { FcGoogle } from "react-icons/fc";
 import { Button } from "@nextui-org/react";
+import "../css/animationAuth.css";
 
 function LoginUser() {
   //!HOOKS DE REACT Y PERSONALIZADOS
@@ -58,8 +59,8 @@ function LoginUser() {
   const errorPassword = error && error.code.includes("password");
 
   return (
-    <div className='mr-48 mt-8 rounded-3xl  z-20 relative  backdrop-blur-xl  w-max'>
-      <div className='  shadow-2xl border border-white/20 bg-black/70 shadow-black p-6 rounded-3xl'>
+    <div className='animation-bottom mr-48 mt-8 rounded-3xl  z-20 relative  backdrop-blur-xl  w-max'>
+      <div className='  shadow-2xl border border-white/20 bg-black/70 px-12 py-10 shadow-black  rounded-3xl'>
         <h3 className='text-2xl/relaxed w-full font-mono uppercase '>
           <span className='text-kenyan-copper-400 font-bold'>
             Inicia sesion{" "}
@@ -97,10 +98,10 @@ function LoginUser() {
             <div className='flex justify-between items-center'>
               <Button
                 type='submit'
+                size='lg'
                 color='primary'
-                variant='shadow'
                 isDisabled={user.email === "" || user.password === ""}
-                className='  bg-kenyan-copper-700 border border-white/40'
+                className='bg-kenyan-copper-800 disabled:bg-gray-900 disabled:opacity-40'
               >
                 Continuar
               </Button>
@@ -117,7 +118,7 @@ function LoginUser() {
             <span className='w-1/2 h-px my-auto bg-white '></span> o{" "}
             <span className='w-1/2 h-px my-auto bg-white '></span>{" "}
           </div>
-          <div className="w-full flex align-center"> 
+          <div className='w-full flex align-center'>
             <Button
               onClick={handleGoogleSingin}
               color='primary'
