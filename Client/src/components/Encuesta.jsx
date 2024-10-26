@@ -87,7 +87,7 @@ function Encuesta() {
   };
 
   return (
-    <section className='relative flex flex-col items-center justify-center mb-20'>
+    <section className='relative flex flex-col items-center justify-center mb-20' id="encuesta">
       <h3 className=' text-4xl font-bold font-mono text-center pt-14 pb-7 text-kenyan-copper-100 '>
         Encuesta
       </h3>

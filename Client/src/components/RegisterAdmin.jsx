@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/authContext";
+import {useNavigate} from 'react-router-dom'
 import InputsContents from "./InputsContents";
 import { Input, Button } from "@nextui-org/react";
 import { adminToken } from "../api/admin.js";
@@ -22,7 +23,7 @@ function RegisterAdmin() {
   const [tokenAdmin, setTokenAdmin] = useState(true);
   const [tokenMessageLabel, setTokenMessageLabel] = useState(null);
   const [token, setToken] = useState("");
-
+  const navigate = useNavigate()
   const { registerAdmin, error } = useAuth();
 
   const handleClickPassword = () => {
@@ -44,6 +45,7 @@ function RegisterAdmin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     registerAdmin(user);
+    navigate();
   };
 
   const errors = {

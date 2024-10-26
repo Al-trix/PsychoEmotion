@@ -37,7 +37,7 @@ function RegisterUser() {
     try {
       await singup(user.email, user.password);
 
-      navigate("/login");
+      navigate("/");
     } catch (err) {
       setError(err);
     }
