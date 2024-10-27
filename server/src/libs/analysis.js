@@ -1,41 +1,41 @@
-import axios from "axios";
-import { ACCESS_TOKEN_HF } from "../config.js";
+import axios from 'axios';
+import { ACCESS_TOKEN_HF } from '../config.js';
 
 export const analyzeSurveys = async (survey) => {
+  console.log(`Bearer ${ACCESS_TOKEN_HF}`);
   try {
     // Mapping personality labels to descriptions
     const personalityLabels = {
-      LABEL_0: "Openness",
-      LABEL_1: "Conscientiousness",
-      LABEL_2: "Extraversion",
-      LABEL_3: "Agreeableness",
-      LABEL_4: "Neuroticism",
+      LABEL_0: 'Openness',
+      LABEL_1: 'Conscientiousness',
+      LABEL_2: 'Extraversion',
+      LABEL_3: 'Agreeableness',
+      LABEL_4: 'Neuroticism',
     };
 
-  const generalContext = `
+    const generalContext = `
   Este cuestionario busca evaluar las respuestas desde varias perspectivas psicológicas: 
   la estabilidad emocional, coherencia cognitiva, rasgos de personalidad, actitud frente a situaciones específicas,
   grado de problematización y nivel de claridad/confianza. Cada respuesta debe ser analizada en función de su alineación 
   con estos factores para determinar si refleja bienestar o malestar emocional, apertura o cierre frente a nuevas experiencias, 
   y otros rasgos psicológicos relevantes.
 `;
-    
 
     // Ensure the survey has exactly 15 questions
     if (survey.length >= 30) {
-      throw new Error("The survey must contain exactly 15 questions.");
+      throw new Error('The survey must contain exactly 15 questions.');
     }
 
     // Prepare the input for the API request
     const inputs = survey.map((surveyData) => ({
       question: surveyData.question,
       response: surveyData.response,
-      context: generalContext
+      context: generalContext,
     }));
 
     // Sentiment analysis using the Hugging Face API
     const sentimentResult = await axios.post(
-      "https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english",
+      'https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english',
       {
         inputs: inputs.map(
           (input) =>
@@ -49,10 +49,12 @@ export const analyzeSurveys = async (survey) => {
 
     // Personality classification using another model
     const personalityResult = await axios.post(
-      "https://api-inference.huggingface.co/models/nasserelsaman/microsoft-finetuned-personality",
+      'https://api-inference.huggingface.co/models/nasserelsaman/microsoft-finetuned-personality',
       {
-        inputs: inputs.map((input) => 
-        `Contexto: ${input.context}\nRespuesta: ${input.response}\nEvalúa esta respuesta en términos de rasgos de personalidad: apertura, responsabilidad, extroversión, amabilidad y neuroticismo.`,)
+        inputs: inputs.map(
+          (input) =>
+            `Contexto: ${input.context}\nRespuesta: ${input.response}\nEvalúa esta respuesta en términos de rasgos de personalidad: apertura, responsabilidad, extroversión, amabilidad y neuroticismo.`
+        ),
       },
       {
         headers: { Authorization: `Bearer ${ACCESS_TOKEN_HF}` },
@@ -63,13 +65,13 @@ export const analyzeSurveys = async (survey) => {
     const analysisResults = inputs.map((input, index) => {
       const sentimentScores = sentimentResult.data[index].map((sentiment) => ({
         label: sentiment.label,
-        score: (sentiment.score * 100).toFixed(2) ,
+        score: (sentiment.score * 100).toFixed(2),
       }));
 
       const personalityScores = personalityResult.data[index];
       const personalityAnalysis = personalityScores.map((score) => ({
         label: personalityLabels[score.label],
-        score: (score.score * 100).toFixed(2) ,
+        score: (score.score * 100).toFixed(2),
       }));
 
       return {
@@ -82,14 +84,17 @@ export const analyzeSurveys = async (survey) => {
 
     return analysisResults;
   } catch (error) {
+    console.log(error);
+
     if (error.response && error.response.status === 429) {
       return {
-        message: "Too many requests. Please wait a moment before trying again.",
+        message: 'Too many requests. Please wait a moment before trying again.',
       };
     } else {
       return {
-        message: "He service is loading"
-      }
+        message: 'He service is loading',
+        error,
+      };
     }
   }
 };

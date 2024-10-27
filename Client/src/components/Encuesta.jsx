@@ -1,11 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import  { useEffect, useRef, useState } from "react";
 import { Navigation } from "swiper/modules";
 import Question from "./Question";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "swiper/css";
 import { FaArrowRight } from "react-icons/fa";
-import { analysisSurvey } from "../api/analysisSurvey";
 import { useAuth } from "../context/authContext";
 import { getAllQuestions } from '../api/admin.js'
 import { Button, Image } from "@nextui-org/react";
@@ -50,8 +49,7 @@ function Encuesta() {
 
   const handleEnd = async () => {
     try {
-      const res = await surveyResponsed(responses);
-
+      await surveyResponsed(responses);
       navigate("/AnalysisSurvey");
     } catch (error) {
       console.log(error);

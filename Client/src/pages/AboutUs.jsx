@@ -1,9 +1,10 @@
-import React, { useState } from "react";
 import Developer from "../components/Developer";
 import { flushSync } from "react-dom";
 import DeveloperView from "../components/DeveloperView";
 import "../css/animations.css";
+import { useState } from "react";
 function AboutUs() {
+  
   const [view, setView] = useState(true);
   const [imgView, setImgView] = useState("");
   const [nameView, setNameView] = useState("");
@@ -21,7 +22,7 @@ function AboutUs() {
       });
     });
   };
-  const handleClickExit = (e) => {
+  const handleClickExit = () => {
     document.startViewTransition(() => {
       flushSync(() => {
         setView((prev) => !prev);
