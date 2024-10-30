@@ -111,14 +111,14 @@ function CreateQuestion({
 
   return (
     <>
-      <article className=' shadow-xl shadow-teal-700/40 border border-white/10 bg-black rounded-lg px-6 py-7 z-50 top-28 left-1/2 transform -translate-x-1/2 fixed w-1/2'>
+      <article className="">
         <IoMdClose
           onClick={setClose ? handleClose : close}
           size={30}
-          className=' hover:opacity-70 cursor-pointer absolute top-0 right-0 rounded-tr-lg rounded-bl-lg bg-red-700 p-1 text-white'
+          className=''
         />
         <form onSubmit={onSubmit}>
-          <h2 className='text-2xl text-center text-kenyan-copper-600 '>
+          <h2 className=''>
             Crea tu pregunta
           </h2>
           <span className=' w-14 -translate-x-1/2 left-1/2 relative my-3 h-px bg-kenyan-copper-100 flex'></span>
@@ -248,23 +248,23 @@ function CreateQuestion({
             </SwiperSlide>
           </Swiper>
           {itemInput !== 2 && (
-            <div className='flex mt-4 w-4/5 mx-auto justify-between '>
+            <div className=''>
               <Button
                 isDisabled={itemInput === 0}
                 onClick={() => swiperRef.current.slidePrev()} // Ir al slide anterior
-                className='mr-2 bg-red-900'
+                className=''
+
                 size='sm'
               >
                 Atrás
               </Button>
-
               <Button
                 isDisabled={
                   (itemInput === 0 && isNaN(watch("num"))) ||
                   (itemInput === 1 && watch("question") === "")
                 }
                 onClick={() => swiperRef.current.slideNext()}
-                className='mr-2 bg-cyan-900'
+                className=''
                 size='sm' // Ir al siguiente slide
               >
                 Siguiente

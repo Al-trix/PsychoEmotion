@@ -57,7 +57,7 @@ function CrudQuestions() {
 
   return (
     <>
-      <section className='relative font-mono  container mx-auto w-full bg-black/20 my-4 py-5 rounded-lg px-10'>
+      <section className='container mx-auto '>
         {isCreate && (
           <CreateQuestion nums={questions}  close={handleClickModal} />
         )}
@@ -68,70 +68,71 @@ function CrudQuestions() {
             question={valueQuestion.question}
             color={valueQuestion.color}
             modify={isModify}
-
             setClose={setIsModify}
             nums={questions}
             close={handleClickModal}
           />
         )}
-        <article className='flex justify-between mt-2'>
+        <article className=''>
           <div>
             <Button
               onClick={handleClickModal}
               startContent={<IoAddCircleOutline />}
-              className=' rounded-lg bg-emerald-800'
+              className=''
             >
               Añadir pregunta
             </Button>
           </div>
-          <div className='flex gap-4 items-center'>
-            <h4 className='bg-kenyan-copper-950 text-white/80 text-sm px-3 py-2 rounded-lg'>
+          <div className=''>
+            <h4 className=''>
               Numero de preguntas:{" "}
-              <span className='text-white '>{questions.length}</span>
+              <span className=' '>{questions.length}</span>
             </h4>
-            <h4 className='bg-kenyan-copper-950 text-white/80 text-sm px-3 py-2 rounded-lg'>
+            <h4 className=''>
               Usuario modificando:{" "}
-              <span className='text-white uppercase'>{userAdmin.username}</span>
+              <span className=''>{userAdmin.username}</span>
             </h4>
           </div>
         </article>
 
-        <article className='flex flex-col gap-5 mt-6'>
+        <article className='bg-black/40 items-center gap-y-10 justify-center grid grid-cols-2  p-9 rounded-2xl '>
           {questions.length !== 0 &&
             questions.map((item) => {
               return (
                 <div
-                  className={` w-full flex gap-6 items-center justify-between rounded-lg  px-6 py-4`}
+                  className={`px-8 ${item.bg}  relative shadow-lg shadow-black py-6 rounded-lg border-white/50 border-2`}
                   key={item._id}
                 >
-                  <h3 className=' border-r-1 pr-5 rounded-sm'>
-                    <span>{item.num}.</span> {item.question}
+                  <div></div>
+                  <h3 className="text-lg text-center text-white shadow-lg shadow-black bg-black/30 w-max mx-auto px-3 py-2 rounded-lg overflow-hidden text-ellipsis whitespace-nowrap">
+                    <span className="font-bold">{item.num}.</span>{' '}
+                    {item.question}
                   </h3>
-                  <span
-                    className={` w-10 h-10 ${
-                      item.bg ? item.bg : "bg-slate-800"
-                    }  ${
-                      item.hover ? item.hover : "hover:bg-slate-600"
-                    } flex border rounded-full `}
-                  ></span>
-                  <div className='flex gap-4'>
+
+                  <div className="flex gap-12 bg-black/30 px-4 py-3 rounded-lg mx-auto w-max">
                     <Button
                       startContent={<MdDelete />}
-                      size='sm'
+                      size="sm"
                       onClick={() => handleDeleteQuestion(item._id)}
-                      variant='shadow'
-                      className='shadow-red-800/20 text-sm  bg-red-800'
+                      variant="shadow"
+                      className="px-10 bg-red-700 shadow-lg shadow-black"
                       shadow
                     >
                       Eliminar
                     </Button>
                     <Button
                       startContent={<FaEdit />}
-                      size='sm'
-                      onClick={() => handleClickModify(item.num, item.bg, item._id, item.question)}
-                      variant='shadow'
-                      className='shadow-cyan-800/20 text-sm bg-cyan-800'
-                      shadow
+                      size="sm"
+                      onClick={() =>
+                        handleClickModify(
+                          item.num,
+                          item.bg,
+                          item._id,
+                          item.question
+                        )
+                      }
+                      variant="shadow"
+                      className="px-10 bg-green-700 shadow-lg shadow-black"
                     >
                       Editar
                     </Button>
@@ -141,18 +142,7 @@ function CrudQuestions() {
             })}
         </article>
       </section>
-      {isCreate && (
-        <div
-          onClick={handleClickModal}
-          className='w-full h-screen  bg-black/80 fixed top-0 z-40'
-        ></div>
-      )}
-      {isModify && (
-        <div
-          onClick={handleClickModal}
-          className='w-full h-screen  bg-black/80 fixed top-0 z-40'
-        ></div>
-      )}
+    
      
       </>
   );
