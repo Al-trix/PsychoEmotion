@@ -10,7 +10,7 @@ import {
 } from "react-icons/bs";
 
 import "../css/homeStyles.css";
-function Question({ numQuestion, question, bg, hover }) {
+function Question({ numQuestion, question, bg, hover, preview = false }) {
   const { setQuestion, setValueChecked } = useAuth();
   const handleChange = (e) => {
     setValueChecked(e.target.value);
@@ -22,70 +22,77 @@ function Question({ numQuestion, question, bg, hover }) {
   };
 
   return (
-    <article className='py-12 mt-8 mx-7  rounded-xl shadow-2xl bg-gray-800/70 border border-white/10 shadow-black/5 font-mono'>
-      <div className='lg:px-14 px-7'>
+    <article
+      className={` ${bg} p-1  rounded-xl shadow-2xl  border border-white/10 h-full w-full shadow-black/5 font-mono`}
+    >
+      <div className=" px-10 rounded-lg py-8 h-full w-full bg-black/85">
         <div>
-          <h5 className='xl:text-xl   text-white text-justify font-sans  '>
+          <h5 className="xl:text-xl   text-white text-justify font-sans  ">
             <span className={` text-2xl font-mono font-bold`}>
-              {numQuestion}.{" "}
+              {numQuestion}.{' '}
             </span>
             {question}
           </h5>
-          <div className='flex flex-col xl:flex-row justify-start mt-2 pt-4  gap-6 border-t border-white/20  lg:justify-evenly items-start lg:items-center '>
+          <div className="flex flex-col xl:flex-row justify-start  pt-4  gap-4 border-t  border-white/20  lg:justify-evenly items-start lg:items-center ">
             <ButtonEncuesta
               bg={bg}
               hover={hover}
+              prev={preview}
               handleChange={handleChange}
-              value='Nada'
-              size='p-4'
+              value="Nada"
+              size="p-4"
               name={`question${numQuestion}`}
               color="border-red-500/50 outline-red-500/50"
             >
-            <BsEmojiTearFill size={25} className='text-white/20' />
+              <BsEmojiTearFill size={25} className="text-gray-400 relative z-50 " />
             </ButtonEncuesta>
             <ButtonEncuesta
               bg={bg}
+              prev={preview}
               hover={hover}
               handleChange={handleChange}
-              value='Muy poco'
-              size='p-2'
+              value="Muy poco"
+              size="p-2"
               name={`question${numQuestion}`}
               color="border-orange-500/40 outline-orange-500/40"
             >
-              <BsEmojiFrownFill size={25} className='text-white/20' />
+              <BsEmojiFrownFill size={25} className="text-gray-400 relative z-50 " />
             </ButtonEncuesta>
             <ButtonEncuesta
               bg={bg}
+              prev={preview}
               hover={hover}
               handleChange={handleChange}
-              value='medio'
-              size='p-1'
+              value="medio"
+              size="p-1"
               name={`question${numQuestion}`}
               color="border-yellow-500/40 outline-yellow-500/40"
             >
-              <BsEmojiNeutralFill size={25} className='text-white/20' />
+              <BsEmojiNeutralFill size={25} className=" text-gray-400 relative z-50 " />
             </ButtonEncuesta>
             <ButtonEncuesta
               bg={bg}
               hover={hover}
+              prev={preview}
               handleChange={handleChange}
-              value='un poco'
-              size='p-2'
+              value="un poco"
+              size="p-2"
               name={`question${numQuestion}`}
               color="border-jade-500/50 outline-jade-500/50"
             >
-              <BsEmojiSmileFill size={25} className='text-white/20' />
+              <BsEmojiSmileFill size={25} className="text-gray-400 relative z-50 " />
             </ButtonEncuesta>
             <ButtonEncuesta
               bg={bg}
+              prev={preview}
               hover={hover}
               handleChange={handleChange}
-              value='mucho'
-              size='p-4'
+              value="mucho"
+              size="p-4"
               name={`question${numQuestion}`}
               color="border-green-600/70 outline-green-600/70"
             >
-              <BsFillEmojiLaughingFill size={25} className='text-white/20' />
+              <BsFillEmojiLaughingFill size={25} className="text-gray-400 relative z-50 " />
             </ButtonEncuesta>
           </div>
         </div>

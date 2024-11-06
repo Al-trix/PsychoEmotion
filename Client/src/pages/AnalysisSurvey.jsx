@@ -4,7 +4,7 @@ import { bouncy } from 'ldrs';
 import { analysisSurvey } from '../api/analysisSurvey';
 import { useAuth } from '../context/authContext';
 import AnalysisCards from '../components/AnalysisCards';
-
+import InfoPersonalyties from '../components/InfoPersonalyties.jsx';
 function AnalysisSurvey() {
   bouncy.register();
   const [analysisCreated, setAnalysisCreated] = useState(null);
@@ -52,14 +52,40 @@ function AnalysisSurvey() {
   const analysisFound = analysis?.data?.foundAnalysis;
 
   return (
-    <section className=" grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2   justify-center items-center gap-4 my-5">
-      <h1 className=" lg:col-span-2 xl:col-span-3 text-center text-4xl  mb-7">
-        Analisis de la encuesta
+    <section className=" my-3 mt-10">
+      <h1 className="w-max mx-auto animation-title text-4xl text-kenyan-copper-500 font-bold">
+        Todo sobre tus respuestas
       </h1>
-      {analysis && !analysisCreated && (
-        <AnalysisCards content={analysisFound} />
-      )}
-      {analysisCreated && <AnalysisCards content={analysisCreated} />}
+      <span className="mx-auto w-32 my-1  bg-white/40 h-px animation-image flex "></span>
+      <div className="grid gap-1 mt-8 px-10">
+        <h4 className="text-lg border mx-auto text-kenyan-copper-200 animation-image font-medium border-white/50 shadow-lg shadow-black w-max px-4 py-2 rounded-full">
+          ¿Qué nos dicen los Rasgos y sus Porcentajes?
+        </h4>
+
+        <span className=" w-px my-1  bg-white/40 h-3 mx-auto animation-title flex "></span>
+        <p className="text-md px-4 text-center text-white/70 w-4/5 mx-auto animation-title shadow-xl shadow-black border border-white/50 rounded-2xl py-3">
+          Cada individuo posee una combinación única de rasgos de personalidad
+          que definen cómo interactúa y percibe el mundo a su alrededor. Estos
+          rasgos, medidos en porcentajes, ofrecen una imagen clara de la
+          intensidad con la que una persona muestra ciertas características. En
+          este artículo, exploraremos los cinco rasgos de personalidad más
+          comunes —Extraversion, Agreeableness, Conscientiousness, Openness, y
+          Neuroticism— y el significado de sus porcentajes en los perfiles de
+          personalidad.
+        </p>
+      </div>
+      <div className='flex mt-24 items-center justify-center animation-up'>
+        <span className=" w-1/3   bg-white/40 h-px mx-auto flex "></span>
+        <span className='text-2xl font-medium text-kenyan-copper-300'>Mas sobre las personalidades</span>
+        <span className=" w-1/3   bg-white/40 h-px mx-auto flex "></span>
+      </div>
+      <InfoPersonalyties />
+      <div className=" gap-6">
+        {analysis && !analysisCreated && (
+          <AnalysisCards content={analysisFound} />
+        )}
+        {analysisCreated && <AnalysisCards content={analysisCreated} />}
+      </div>
     </section>
   );
 }

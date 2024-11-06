@@ -1,73 +1,69 @@
-.animation-out{
-    animation-name: entradaInputs;
-        animation-timing-function: ease;
-        animation-fill-mode: both;
-        animation-direction: normal;
-        animation-duration: .8s;
-        animation-iteration-count: 1;
+.animation-out {
+  animation-name: entradaInputs;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-direction: normal;
+  animation-duration: 0.8s;
+  animation-iteration-count: 1;
 }
-.animation-translate{
-    animation-name: entradaSelects;
-        animation-timing-function: ease;
-        animation-fill-mode: both;
-        animation-direction: normal;
-        animation-duration: .8s;
-        animation-iteration-count: 1;
+.animation-translate {
+  animation-name: entradaSelects;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-direction: normal;
+  animation-duration: 0.8s;
+  animation-iteration-count: 1;
 }
-.animation-bottom{
-    animation-name: entradaBottom;
-        animation-timing-function: ease;
-        animation-fill-mode: both;
-        animation-direction: normal;
-        animation-duration: .8s;
-        animation-iteration-count: 1;
+.animation-bottom {
+  animation-name: entradaBottom;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-direction: normal;
+  animation-duration: 0.8s;
+  animation-iteration-count: 1;
 }
-.animation-in{
-    animation-name: entradaImg;
-        animation-timing-function: ease;
-        animation-fill-mode: both;
-        animation-direction: normal;
-        animation-duration: .8s;
-        animation-iteration-count: 1;
+.animation-in {
+  animation-name: entradaImg;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-direction: normal;
+  animation-duration: 1.1s;
+  animation-iteration-count: 1;
 }
 
 @keyframes entradaInputs {
-    0%{
-        transform: translateY(12px);
-        opacity: .2;
-    }
-    100%{
-        opacity: 1;
-    }
-
+  0% {
+    transform: translateY(12px);
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 @keyframes entradaSelects {
-    0%{
-        transform: translateX(-12px);
-        opacity: .2;
-    }
-    100%{
-        opacity: 1;
-    }
-
+  0% {
+    transform: translateX(-400px) ;
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 @keyframes entradaBottom {
-    0%{
-        transform: translateX(12px);
-        opacity: .2;
-    }
-    100%{
-        opacity: 1;
-    }
-
+  0% {
+    transform: translateX(12px);
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 @keyframes entradaImg {
-    0%{
-        transform: translateY(-12px);
-        opacity: .2;
-    }
-    100%{
-        opacity: 1;
-    }
-
+  0% {
+    transform: translateX(-12px);
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -30,7 +30,7 @@ function TypeUserR() {
     <section
       className={` font-mono justify-center relative flex ${
         value ? "flex-row" : "flex-row-reverse"
-      } lg:justify-between  rounded-lg mt-4  w-full `}
+      } lg:justify-between  rounded-lg mt-6  w-full  `}
     >
       <div className='w-full basis-3/6'>
         {value !== null ? (

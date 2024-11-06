@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { useAuth } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
 import { Button, Image } from "@nextui-org/react";
-import "../css/animationAuth.css";
 import InputsContents from "./InputsContents";
 
 function RegisterUser() {

@@ -1,40 +1,41 @@
-import React, { useEffect, useState } from "react";
-import { getAllQuestions, deleteQuestion } from "../api/admin.js";
-import { useAuth } from "../context/authContext.jsx";
-import CreateQuestion from "../components/CreateQuestion.jsx";
-import { Button } from "@nextui-org/react";
-import { MdDelete } from "react-icons/md";
-import { FaEdit } from "react-icons/fa";
+import { useEffect, useState } from 'react';
+import Question from '../components/Question.jsx';
+import { getAllQuestions, deleteQuestion } from '../api/admin.js';
+import { useAuth } from '../context/authContext.jsx';
+import CreateQuestion from '../components/CreateQuestion.jsx';
+import { Button } from '@nextui-org/react';
+import { MdDelete } from 'react-icons/md';
+import { FaEdit } from 'react-icons/fa';
+import { IoAddCircleOutline } from 'react-icons/io5';
 
-import { IoAddCircleOutline } from "react-icons/io5";
 function CrudQuestions() {
   const [questions, setQuestions] = useState([]);
   const [valueQuestion, setValueQuestion] = useState({
-    num: "",
-    question: "",
-    color: "",
-    id: "",
+    num: '',
+    question: '',
+    color: '',
+    id: '',
   });
-  const { modifyQuestion, modifyQuestions } = useAuth();
+  const { modifyQuestion, modifyQuestions, userAdmin } = useAuth();
 
   const [isCreate, setIsCreate] = useState(false);
   const [isModify, setIsModify] = useState(false);
-  const { userAdmin } = useAuth();
+
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
         const questionsResult = await getAllQuestions();
-        setQuestions(questionsResult.length !== 0 && questionsResult.data);
+        setQuestions(questionsResult.length !== 0 ? questionsResult.data : []);
       } catch (error) {
         console.log(error);
       }
     };
-
     fetchQuestions();
   }, [modifyQuestion]);
 
   const handleClickModal = () => {
     setIsCreate((prev) => !prev);
+    if (isCreate) resetModal(); // Reset modal on close
   };
 
   const handleClickModify = (num, color, id, question) => {
@@ -44,8 +45,20 @@ function CrudQuestions() {
       id,
       color,
     });
-    setIsModify((prev) => !prev);
+    setIsModify(true); // Activar el modo edición directamente
   };
+
+  const resetModal = () => {
+    setValueQuestion({
+      num: '',
+      question: '',
+      color: '',
+      id: '',
+    });
+    setIsCreate(false);
+    setIsModify(false);
+  };
+
   const handleDeleteQuestion = async (id) => {
     try {
       await deleteQuestion(id);
@@ -56,95 +69,115 @@ function CrudQuestions() {
   };
 
   return (
-    <>
-      <section className='container mx-auto '>
-        {isCreate && (
-          <CreateQuestion nums={questions}  close={handleClickModal} />
-        )}
-        {isModify && (
-          <CreateQuestion
-            num={valueQuestion.num}
-            id={valueQuestion.id}
-            question={valueQuestion.question}
-            color={valueQuestion.color}
-            modify={isModify}
-            setClose={setIsModify}
-            nums={questions}
-            close={handleClickModal}
-          />
-        )}
-        <article className=''>
+    <div
+      className={`w-full mx-auto grid ${
+        isModify || isCreate ? 'grid-cols-2' : ''
+      } relative`}
+    >
+      <section className="container mx-auto w-full mt-10 mb-6 ">
+        <article
+          className={`flex w-3/4 ${
+            isModify || isCreate ? 'flex-col text-sm gap-4 ' : ''
+          } bg-black/30 px-6 rounded-lg py-4 items-center mx-auto justify-between`}
+        >
           <div>
             <Button
               onClick={handleClickModal}
               startContent={<IoAddCircleOutline />}
-              className=''
+              radius="sm"
+              className="bg-jade-900 shadow-md shadow-black border border-white/30 px-6 py-2"
+              variant="shadow"
             >
               Añadir pregunta
             </Button>
           </div>
-          <div className=''>
-            <h4 className=''>
-              Numero de preguntas:{" "}
-              <span className=' '>{questions.length}</span>
+          <div className="flex flex-row-reverse rounded-lg gap-4 items-center">
+            <h4 className="border border-kenyan-copper-600 shadow-white/10 shadow-lg px-3 py-2 rounded-lg">
+              Numero de preguntas: <span>{questions.length}</span>
             </h4>
-            <h4 className=''>
-              Usuario modificando:{" "}
-              <span className=''>{userAdmin.username}</span>
+            <h4 className="bg-kenyan-copper-800 shadow-white/10 shadow-lg px-3 py-2 rounded-lg">
+              Administrador modificando:{' '}
+              <span className="font-medium">{userAdmin.username}</span>
             </h4>
           </div>
         </article>
-
-        <article className='bg-black/40 items-center gap-y-10 justify-center grid grid-cols-2  p-9 rounded-2xl '>
+        <article className="w-full flex flex-col items-center mx-auto gap-6 justify-center px-6 py-6 rounded-2xl">
           {questions.length !== 0 &&
-            questions.map((item) => {
-              return (
+            questions.map(({ num, question, bg, hover, _id }) => (
+              <div
+                className={`w-4/5 flex ${
+                  isModify || isCreate ? 'flex-col w-min' : ''
+                } px-10 pb-6 bg-black/50 items-center shadow-lg shadow-black rounded-lg border-white/50 border-2`}
+                key={_id}
+              >
+                <div className="basis-full mx-auto">
+                  <Question
+                    numQuestion={num}
+                    question={question}
+                    preview
+                    bg={bg}
+                    hover={hover}
+                  />
+                </div>
                 <div
-                  className={`px-8 ${item.bg}  relative shadow-lg shadow-black py-6 rounded-lg border-white/50 border-2`}
-                  key={item._id}
+                  className={`flex bg-gray-800/50 border border-white/10 shadow-xl shadow-gray-800 h-min flex-col px-10 py-10 mt-6 gap-6 rounded-lg mx-auto ${
+                    isModify || isCreate ? 'w-full' : ''
+                  }`}
                 >
-                  <div></div>
-                  <h3 className="text-lg text-center text-white shadow-lg shadow-black bg-black/30 w-max mx-auto px-3 py-2 rounded-lg overflow-hidden text-ellipsis whitespace-nowrap">
-                    <span className="font-bold">{item.num}.</span>{' '}
-                    {item.question}
-                  </h3>
-
-                  <div className="flex gap-12 bg-black/30 px-4 py-3 rounded-lg mx-auto w-max">
+                  <span className="w-full text-center text-kenyan-copper-200 uppercase font-bold">
+                    Opciones
+                  </span>
+                  <div
+                    className={`flex flex-col ${
+                      isModify || isCreate ? 'flex-row' : ''
+                    } items-center gap-3`}
+                  >
                     <Button
                       startContent={<MdDelete />}
-                      size="sm"
-                      onClick={() => handleDeleteQuestion(item._id)}
+                      onClick={() => handleDeleteQuestion(_id)}
                       variant="shadow"
-                      className="px-10 bg-red-700 shadow-lg shadow-black"
-                      shadow
+                      className="px-8 py-4 w-full bg-red-700 shadow-lg shadow-black"
                     >
                       Eliminar
                     </Button>
                     <Button
                       startContent={<FaEdit />}
-                      size="sm"
-                      onClick={() =>
-                        handleClickModify(
-                          item.num,
-                          item.bg,
-                          item._id,
-                          item.question
-                        )
-                      }
+                      onClick={() => handleClickModify(num, bg, _id, question)}
                       variant="shadow"
-                      className="px-10 bg-green-700 shadow-lg shadow-black"
+                      className="px-8 py-4 w-full bg-cyan-700 shadow-lg shadow-black"
                     >
                       Editar
                     </Button>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
         </article>
       </section>
-    
-     
-      </>
+      {
+
+        isCreate ? isModify  ?  <CreateQuestion
+            num={valueQuestion.num}
+            id={valueQuestion.id}
+            question={valueQuestion.question}
+            color={valueQuestion.color}
+            modify={true}
+            setClose={() => setIsModify(false)}
+            nums={questions}
+            close={resetModal} 
+          /> : <CreateQuestion nums={questions} close={handleClickModal} /> : isModify &&  <CreateQuestion
+            num={valueQuestion.num}
+            id={valueQuestion.id}
+            question={valueQuestion.question}
+            color={valueQuestion.color}
+            modify={true}
+            setClose={() => setIsModify(false)}
+            nums={questions}
+            close={resetModal} 
+          /> 
+        
+      }
+    </div>
   );
 }
 

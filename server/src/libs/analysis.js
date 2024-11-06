@@ -6,11 +6,11 @@ export const analyzeSurveys = async (survey) => {
   try {
     // Mapping personality labels to descriptions
     const personalityLabels = {
-      LABEL_0: 'Openness',
-      LABEL_1: 'Conscientiousness',
-      LABEL_2: 'Extraversion',
-      LABEL_3: 'Agreeableness',
-      LABEL_4: 'Neuroticism',
+      LABEL_0: 'Apertura',
+      LABEL_1: 'Responsabilidad',
+      LABEL_2: 'Extraversión',
+      LABEL_3: 'Amabilidad',
+      LABEL_4: 'Neuroticismo',
     };
 
     const generalContext = `

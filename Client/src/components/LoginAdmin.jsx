@@ -4,7 +4,6 @@ import InputsContents from "./InputsContents";
 import ErrorAlert from "../components/ErrorAlert";
 import { Input, Button } from "@nextui-org/react";
 import { FaUserSecret } from "react-icons/fa";
-import "../css/animationAuth.css";
 
 import { adminToken } from "../api/admin.js";
 
@@ -78,7 +77,7 @@ function LoginUser() {
   return (
     <>
       {tokenAdmin ? (
-        <div className='animation-in  rounded-3xl relative z-20 -translate-x-36  translate-y-1/3   backdrop-blur-lg w-max'>
+        <div className='animation-translate  rounded-3xl relative z-20 -translate-x-36  translate-y-1/3   backdrop-blur-lg w-max mt-20'>
           <div className=' shadow-2xl border border-white/20 bg-black/80 shadow-black py-8 px-10 rounded-3xl'>
             <h3 className='text-2xl text-center   text-kenyan-copper-500 font-boldtext-kenyan-copper-500 font-bold  font-mono uppercase'>
               Introduce el token de Administradores{" "}

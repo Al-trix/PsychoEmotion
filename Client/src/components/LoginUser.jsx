@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import InputsContents from "./InputsContents";
 import { FcGoogle } from "react-icons/fc";
 import { Button } from "@nextui-org/react";
-import "../css/animationAuth.css";
 
 function LoginUser() {
   //!HOOKS DE REACT Y PERSONALIZADOS
