@@ -14,7 +14,7 @@
   animation-duration: 0.6s;
   animation-iteration-count: 1;
 }
-.animation-in-home0 {
+.animation-in-home {
   animation-name: entradaEncuesta;
   animation-timing-function: linear;
   animation-fill-mode: both;

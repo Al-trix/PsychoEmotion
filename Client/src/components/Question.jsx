@@ -23,7 +23,7 @@ function Question({ numQuestion, question, bg, hover, preview = false }) {
 
   return (
     <article
-      className={` ${bg} p-1  rounded-xl shadow-2xl  border border-white/10 h-full w-full shadow-black/5 font-mono`}
+      className={` ${bg} p-1  rounded-xl shadow-2xl  border border-white/10 h-ful w-full shadow-black/5 font-mono`}
     >
       <div className=" px-10 rounded-lg py-8 h-full w-full bg-black/85">
         <div>
@@ -39,7 +39,7 @@ function Question({ numQuestion, question, bg, hover, preview = false }) {
               hover={hover}
               prev={preview}
               handleChange={handleChange}
-              value="Nada"
+              value="Nunca"
               size="p-4"
               name={`question${numQuestion}`}
               color="border-red-500/50 outline-red-500/50"
@@ -51,7 +51,7 @@ function Question({ numQuestion, question, bg, hover, preview = false }) {
               prev={preview}
               hover={hover}
               handleChange={handleChange}
-              value="Muy poco"
+              value="Casi nunca"
               size="p-2"
               name={`question${numQuestion}`}
               color="border-orange-500/40 outline-orange-500/40"
@@ -63,7 +63,7 @@ function Question({ numQuestion, question, bg, hover, preview = false }) {
               prev={preview}
               hover={hover}
               handleChange={handleChange}
-              value="medio"
+              value="A veces"
               size="p-1"
               name={`question${numQuestion}`}
               color="border-yellow-500/40 outline-yellow-500/40"
@@ -75,7 +75,7 @@ function Question({ numQuestion, question, bg, hover, preview = false }) {
               hover={hover}
               prev={preview}
               handleChange={handleChange}
-              value="un poco"
+              value="Muy seguido"
               size="p-2"
               name={`question${numQuestion}`}
               color="border-jade-500/50 outline-jade-500/50"
@@ -87,7 +87,7 @@ function Question({ numQuestion, question, bg, hover, preview = false }) {
               prev={preview}
               hover={hover}
               handleChange={handleChange}
-              value="mucho"
+              value="Siempre"
               size="p-4"
               name={`question${numQuestion}`}
               color="border-green-600/70 outline-green-600/70"

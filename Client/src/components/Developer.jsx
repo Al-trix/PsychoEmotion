@@ -1,25 +1,23 @@
-import React, { useState } from "react";
-import { FaArrowDown } from "react-icons/fa";
-import {Image} from '@nextui-org/react'
-import "../css/animations.css";
+import { MdOutlineArrowForwardIos } from 'react-icons/md';
+import { Divider } from '@nextui-org/react';
+import '../css/animations.css';
 
 function Developer({ img, description, name, delay, handleClick, color, bg }) {
-  
   return (
     <article
       onClick={handleClick}
-      className={` animation-devs  cursor-pointer hover:scale-95 hover:opacity-90 transition-transform duration-300  bg-black/60 border border-white/70 rounded-xl gap-7 flex items-center`}
+      className={` animation-devs  cursor-pointer hover:scale-95 hover:opacity-50 transition-transform duration-300    shadow-2xl shadow-black/60 bg-black/30 rounded-lg gap-7  items-center`}
     >
-      <picture className='w-1/4  bg-gray-100 rounded-xl pointer-events-none'>
+      <picture className="w-96 mx-auto    h-20 bg-gray-100 rounded-xl pointer-events-none">
         <img
           src={img}
-          alt=''
+          alt=""
           data-img={`img${delay}`}
-          className='w-full select-none pointer-events-none'
+          className="w-full  h-96 select-none rounded-t-lg object-cover pointer-events-none"
           style={{ viewTransitionName: `img${delay}` }}
         />
       </picture>
-      <div className='pointer-events-none  '>
+      <div className="pointer-events-none px-12 mt-4 ">
         <h3
           data-name={`text${delay}`}
           style={{ viewTransitionName: `text${delay}` }}
@@ -27,11 +25,14 @@ function Developer({ img, description, name, delay, handleClick, color, bg }) {
         >
           {name}
         </h3>
-        <p className='pointer-events-none text-sm text-white/80'>{description}</p>
-        <FaArrowDown
-          color='#fff'
-          size={30}
-          className='animate-bounce  mt-2 pointer-events-none'
+        <p className="pointer-events-none text-xs text-center text-white/60">
+          {description}
+        </p>
+        <Divider className='my-3'/>
+        <MdOutlineArrowForwardIos
+          color="#fff"
+          size={40}
+          className="shadow-sm   mx-auto mb-4 pointer-events-none"
         />
       </div>
     </article>

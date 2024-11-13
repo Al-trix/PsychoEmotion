@@ -12,7 +12,7 @@ import mockup from '../../public/mockup.jpg';
 import { MdOutlineSubdirectoryArrowRight } from 'react-icons/md';
 import { GiCheckMark } from 'react-icons/gi';
 
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight, FaCheck } from 'react-icons/fa';
 import { useAuth } from '../context/authContext';
 import { getAllQuestions } from '../api/admin.js';
 import { Button, Divider, Image } from '@nextui-org/react';
@@ -101,23 +101,30 @@ function Encuesta() {
       className={`relative flex flex-col items-center justify-center mb-14 `}
       id="encuesta"
     >
-      <h3 className=" text-4xl font-bold font-mono text-center pt-14 pb-7 text-kenyan-copper-100 ">
+      <h3 className=" text-4xl mt-5 font-bold font-mono text-center pt-14  pb-4 text-kenyan-copper-100 ">
         Encuesta
       </h3>
+      <Divider className="w-1/2 mb-8" />
       {responseSurvey ? (
-        <div className="w-max mb-32 mx-auto  bg-black/50 shadow-lg shadow-black px-8 py-5">
-          <h4 className="text-2xl text-kenyan-copper-500 ">
-            ¡Ya respondiste la encuesta!
+        <div className="w-max mb-10 mx-auto  rounded-full shadow-lg shadow-black relative px-2 py-16">
+          <FaCheck className='absolute translate-x-1/2  text-green-500/60 left-12 -z-10 -translate-y-1/4 bottom-30' size={350}/>
+
+          <h4 className="text-xl backdrop-blur-xl border-white/10 border-b-0 shadow-lg z-50 shadow-black text-center rounded-sm px-4 pb-1 pt-2 mx-auto w-max border  text-jade-500 ">
+            Ya respondiste la encuesta
+            <Divider className="mb-px  w-12 mt-1 mx-auto" />
           </h4>
-          <Divider className="my-1  w-1/4" />
-          <p className="text-xl text-white/80">
-            La encuesta ya ha sido realizada, asi que,{' '}
-            <span className="ml-1 text-jade-500">!revisala¡.</span>
+          <Divider className="mb-5  h-4 mt-1 mx-auto" orientation="vertical" />
+          <p className="text-md w-2/3 border z-50 border-b-0 backdrop-blur-xl border-white/10 shadow-lg shadow-black text-center mx-auto text-white/80  px-4 py-2">
+            Gracias por completar la encuesta. Puedes revisar tus respuestas
+            haciendo clic en el botón de abajo.
           </p>
           <NavLink to={'/AnalysisSurvey'}>
-            <button className="mt-4 flex items-center justify-center g bg-blue-500 text-black font-semibold mx-auto px-4 py-1 rounded-lg w-max">
+            <Button
+              color="primary"
+              className="mt-6 text-lg  flex items-center justify-center border backdrop-blur-xl text-cyan-800 outline-1 outline-offset-6  outline-cyan-800 hover:bg-cyan-500 hover:text-white hover:outline-offset-0   shadow-white/10 border-cyan-800  font-semibold mx-auto px-10 py-2 rounded-lg w-max"
+            >
               Revisa la encuesta <IoIosArrowForward />
-            </button>
+            </Button>
           </NavLink>
         </div>
       ) : (
@@ -263,17 +270,14 @@ function Encuesta() {
           >
             <div
               className={`px-6 translate-x-20  py-20 ${
-                playEncuesta && 'animation-out-home'
+                playEncuesta && 'animation-out-home top-12'
               }
                 items-center bg-black/50 backdrop-blur-3xl   z-30 shadow-2xl rounded-full   shadow-black font-mono  flex flex-col justify-center`}
             >
               <h3 className="text-3xl text-kenyan-copper-500">Importante</h3>
               <span className="w-1/12 h-px bg-white "></span>
               <p className="text-white/70 w-4/5 text-justify my-5">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Aspernatur officia velit ullam enim pariatur eum sunt architecto
-                alias accusamus incidunt rem voluptatum vitae dolorem numquam
-                tempore delectus, saepe porro suscipit.
+               Recuerda que esta encuesta es analizada por una IA la cual no es 100% segura de que tus resultados sean los mas acertados, pero si te puede brindar un apoyo respecto al estado mental y emociona, por lo que despues del diagnóstico realizado por la encuesta, se recomienda la atención de un profesional.
               </p>
               <Button
                 color="prmary"

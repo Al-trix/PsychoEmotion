@@ -67,8 +67,7 @@ function ProfileUser({ user }) {
               <p className='font-semibold'>Correo: </p>
               <p className='font-semibold'>{user?.email}</p>
             </DropdownItem>
-            <DropdownItem key='settings'>My Settings</DropdownItem>
-            <DropdownItem key='help_and_feedback'>Help & Feedback</DropdownItem>
+           
             <DropdownItem
               onPress={handleClick}
               key='logout'

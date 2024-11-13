@@ -1,8 +1,12 @@
 import Developer from "../components/Developer";
 import { flushSync } from "react-dom";
 import DeveloperView from "../components/DeveloperView";
+import alvaro from '../../public/alvaro-face.jpeg'
+import simon from '../../public/simon-face.jpeg'
+import deivy from '../../public/deivy-face.jpeg'
 import "../css/animations.css";
 import { useState } from "react";
+import { Divider } from "@nextui-org/react";
 function AboutUs() {
   
   const [view, setView] = useState(true);
@@ -29,14 +33,27 @@ function AboutUs() {
       });
     });
   };
+  const descriptions = {
+    textSimon:
+      'Estudiante de la Institución Educativa la candelaria, interesado en los estudios de la mente humana y cómo se relaciona la persona con su entorno, yo sueño con poder seguir cultivando mis intereses en la universidad y poder lograr algo de lo que me sienta orgulloso.',
+    textDeivy:
+      'Estudiante de la institución educativa La Candelaria, amante del dibujo y el diseño, sueño con poder descubrir nuevos gustos, pasiones e intereses en la vida, seguir con los estudios y cultivar nuevos propósitos en la universidad y en la futura vida independiente',
+      textAlvaro: 'Estudiante de la Institución Educativa la candelaria, apasionado por la tecnologuia y la informatica, conocedor de multiples lenguajes y gran amante del codigo. Una persona interesada plenamente en sus estudios y trabajos. Mi sueño es estudiar ingenieria en la universidad y seguir con un empleo en esto.'
+  };
+  
   console.log(view, imgView, imgStyleView);
   return (
     <div className="w-full  justify-center items-center font-mono my-9">
-      <div className="">
-        <h3 className="text-4xl text-white animation-text text-center">
+      <div className="w-3/4 text-center mx-auto ">
+        <h3 className="text-2xl border-2  mx-auto w-max border-kenyan-copper-500 rounded-lg  px-5 py-5 font-bold text-white animation-title text-center">
           Conoce el equipo
+          <Divider className="mt-1 w-32   mx-auto" />
         </h3>
-        <p>
+        <Divider
+          className="mt-1 h-3  bg-kenyan-copper-500 mx-auto"
+          orientation="vertical"
+        />
+        <p className=" border-2 animation-image border-kenyan-copper-500 rounded-lg  px-5 py-5 text-white/80 text-md shadow-md shadow-white/20">
           Tres estudiantes apasionados por la tecnología y la psicología se
           unieron para crear un portal web innovador que utiliza inteligencia
           artificial para realizar encuestas de personalidad. Su principal
@@ -48,11 +65,18 @@ function AboutUs() {
           mejor a sí misma.
         </p>
       </div>
+      <div className="flex mt-24 items-center justify-center animation-up">
+        <span className=" w-2/5   bg-white/40 h-px mx-auto flex "></span>
+        <span className="text-3xl mx-7 font-medium text-kenyan-copper-300">
+          Integrantes
+        </span>
+        <span className=" w-2/5   bg-white/40 h-px mx-auto flex "></span>
+      </div>
       {view && (
-        <section className="flex border-rainbow border-2 flex-col w-3/4 mx-auto mt-4 rounded-xl bg-black/20 py-4 px-7 gap-5">
+        <section className="mt-8 animation-up  w-max mx-auto gap-5 flex ">
           <Developer
             handleClick={handleClick}
-            img={'../../public/logo.png'}
+            img={alvaro}
             delay={1}
             description={'Deeveloper full-stack'}
             name={'Alvaro Arboleda'}
@@ -61,7 +85,7 @@ function AboutUs() {
           />
           <Developer
             handleClick={handleClick}
-            img={'../../public/logo.png'}
+            img={deivy}
             rigth={true}
             delay={2}
             description={'Diseñador grafico'}
@@ -71,7 +95,7 @@ function AboutUs() {
           />
           <Developer
             handleClick={handleClick}
-            img={'../../public/logo-lite.png'}
+            img={simon}
             delay={3}
             description={'Investigador y logistica'}
             name={'Simon Andres Rojas'}
@@ -86,6 +110,13 @@ function AboutUs() {
           nameStyleView={nameStyleView}
           handleClickExit={handleClickExit}
           src={imgView}
+          text={
+            nameView && nameView === 'Simon Andres Rojas'
+              ? descriptions.textSimon
+              : nameView === 'Deivy Gallego Villa'
+              ? descriptions.textDeivy
+              : descriptions.textAlvaro
+          }
           imgStyleView={imgStyleView}
         />
       )}

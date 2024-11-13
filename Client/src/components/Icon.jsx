@@ -1,7 +1,7 @@
-import React from "react";
-import { Tooltip } from "@nextui-org/react";
+import { Tooltip, Divider } from "@nextui-org/react";
 export default function Icon({ children, nameIcon, name }) {
   return (
+    
     <Tooltip
       content={nameIcon}
       classNames={{
@@ -22,12 +22,12 @@ export default function Icon({ children, nameIcon, name }) {
       }}
     >
       <div
-        className={` animation-icons border-b pb-2 hover:scale-110 cursor-pointer transition-colors duration-250   ${
+        className={` animation-icons border  border-white/70 p-2 rounded-lg hover:scale-90 cursor-help transition-transform-colors duration-400   ${
           name && name === "Alvaro Arboleda"
-            ? "text-ming-500/20 hover:text-ming-500"
+            ? "text-ming-500/60 hover:text-ming-500"
             : name === "Deivy Gallego"
-            ? "text-red-500/20 hover:text-red-500"
-            : "text-jade-500/20 text-jade-500"
+            ? "text-red-500/60 hover:text-red-500"
+            : "text-jade-500/60 hover:text-jade-500"
         }`}
       >
         {children}

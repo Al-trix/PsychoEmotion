@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Question from '../components/Question.jsx';
 import { getAllQuestions, deleteQuestion } from '../api/admin.js';
+import {  Divider } from '@nextui-org/react';
 import { useAuth } from '../context/authContext.jsx';
 import CreateQuestion from '../components/CreateQuestion.jsx';
 import { Button } from '@nextui-org/react';
@@ -74,7 +75,7 @@ function CrudQuestions() {
         isModify || isCreate ? 'grid-cols-2' : ''
       } relative`}
     >
-      <section className="container mx-auto w-full mt-10 mb-6 ">
+      <section className="container mx-auto w-full  mt-10 mb-6 ">
         <article
           className={`flex w-3/4 ${
             isModify || isCreate ? 'flex-col text-sm gap-4 ' : ''
@@ -101,13 +102,13 @@ function CrudQuestions() {
             </h4>
           </div>
         </article>
-        <article className="w-full flex flex-col items-center mx-auto gap-6 justify-center px-6 py-6 rounded-2xl">
+        <article className={`w-full flex flex-col items-center ${isCreate || isModify ? 'w-96': '' } mx-auto gap-6 justify-center px-6 py-6 rounded-2xl`}>
           {questions.length !== 0 &&
             questions.map(({ num, question, bg, hover, _id }) => (
               <div
-                className={`w-4/5 flex ${
+                className={`w-4/5  flex ${
                   isModify || isCreate ? 'flex-col w-min' : ''
-                } px-10 pb-6 bg-black/50 items-center shadow-lg shadow-black rounded-lg border-white/50 border-2`}
+                } px-10  py-6 bg-black/50 items-center shadow-lg shadow-black rounded-lg border-white/50 border-2`}
                 key={_id}
               >
                 <div className="basis-full mx-auto">
@@ -119,17 +120,18 @@ function CrudQuestions() {
                     hover={hover}
                   />
                 </div>
+                <Divider className={`w-5 ${isModify || isCreate ? 'h5' : ''}`} orientation={isModify || isCreate ? 'vertical' : 'horizontal'} />
                 <div
-                  className={`flex bg-gray-800/50 border border-white/10 shadow-xl shadow-gray-800 h-min flex-col px-10 py-10 mt-6 gap-6 rounded-lg mx-auto ${
-                    isModify || isCreate ? 'w-full' : ''
+                  className={`flex bg-gray-800/50 border border-white/10 shadow-xl shadow-gray-800 h-min flex-col px-10 py-10  gap-6 rounded-lg mx-auto ${
+                    isModify || isCreate ? 'w-full mt-4 py-5' : ''
                   }`}
                 >
                   <span className="w-full text-center text-kenyan-copper-200 uppercase font-bold">
                     Opciones
                   </span>
                   <div
-                    className={`flex flex-col ${
-                      isModify || isCreate ? 'flex-row' : ''
+                    className={`grid grid-rows-1  ${
+                      isModify || isCreate ? 'grid-cols-2' : ''
                     } items-center gap-3`}
                   >
                     <Button

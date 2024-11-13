@@ -1,4 +1,5 @@
 import Encuesta from '../components/Encuesta.jsx';
+import InfoPersonalitiesHome from '../components/InfoPersonalitiesHome.jsx';
 import { FaQuestion } from 'react-icons/fa6';
 
 import TypeOfPersonalities from '../components/TypeOfPersonalities.jsx';
@@ -150,6 +151,7 @@ function Home() {
         </div>
       </section>
       <TypeOfPersonalities />
+      <InfoPersonalitiesHome />
       <Encuesta />
     </>
   );

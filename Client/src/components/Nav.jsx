@@ -16,7 +16,6 @@ import {
 import { useAuth } from "../context/authContext";
 const menuItems = [
   "Dashboard",
-  "contact",
   "about us",
   "info",
   "Analytics",
@@ -65,9 +64,7 @@ function Nav() {
             <img width={70} height={70} src={logo} alt='' />
           </NavLink>
         </NavbarBrand>
-        <NavbarItem>
-          <Link name={"Contactanos"} href={"/contact"} />
-        </NavbarItem>
+       
         <NavbarItem>
           <Link name={"Sobre nosotros"} href={"/aboutUs"} />
         </NavbarItem>

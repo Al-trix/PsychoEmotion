@@ -11,6 +11,7 @@ import { bouncy } from "ldrs";
 import AboutUs from "./pages/AboutUs";
 import AnalysisSurvey from "./pages/AnalysisSurvey";
 import CrudQuestions from "./pages/CrudQuestions";
+import InfoProyect from "./pages/InfoProyect";
 
 function App() {
   const { user, loading, userAdmin } = useAuth();
@@ -58,8 +59,16 @@ function App() {
           </ProtectedUser>
         }
       />
-
-      <Route path='/contact' element={<Header></Header>} />
+      <Route
+        path='/info'
+        element={
+          <ProtectedUser>
+            <Header>
+              <InfoProyect />
+            </Header>
+          </ProtectedUser>
+        }
+      />
 
       <Route
         path='/aboutus'
